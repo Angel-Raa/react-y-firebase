@@ -7,7 +7,13 @@ import { BrowserRouter } from "react-router";
 import { store } from "./lib/store/store";
 import { ThemeProviderWrapper } from "./theme/ThemeProviderWrapper";
 
-createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+	throw new Error("Failed to find the root element");
+}
+
+createRoot(rootElement).render(
 	<StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>

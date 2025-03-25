@@ -18,7 +18,7 @@ export const Footer = (): React.JSX.Element => {
 				direction={"row"}
 				justifyContent={"space-between"}
 				alignItems={"center"}
-			></Grid2>
+			/>
 		</Box>
 	);
 };
