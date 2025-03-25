@@ -4,15 +4,15 @@ import { AuthRouter } from "../auth";
 import { Journal } from "../page";
 
 export const Router = () => {
-  return (
-    <>
-      <Routes>
-        {/** Login Y Sign */}
-        <Route path="/auth/*" element={<AuthRouter />} />
+	return (
+		<>
+			<Routes>
+				{/** Login Y Sign */}
+				<Route path="/auth/*" element={<AuthRouter />} />
 
-        {/** Journal */}
-        <Route path="/" element={<Journal />} />
-      </Routes>
-    </>
-  );
+				{/** Journal */}
+				<Route path="/" element={<Journal />} />
+			</Routes>
+		</>
+	);
 };
