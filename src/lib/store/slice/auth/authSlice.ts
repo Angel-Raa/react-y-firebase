@@ -28,7 +28,9 @@ export const authSlice = createSlice({
 	reducers: {
 		login: () => {},
 		logout: () => {},
-		checkingCredentials: () => {},
+		checkingCredentials: (state) => {
+			state.status = AuthStatus.Checking;
+		},
 	},
 });
 

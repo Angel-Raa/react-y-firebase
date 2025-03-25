@@ -1,72 +1,73 @@
-# **App Journal - React & Firebase**  
+# **App Journal - React & Firebase**
 
-## **1. Clonar el repositorio**  
+## **1. Clonar el repositorio**
 
-Ejecuta el siguiente comando para clonar el repositorio:  
+Para comenzar, clona el repositorio en tu máquina local utilizando el siguiente comando:
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 ```
 
-Luego, accede al directorio del proyecto:  
+Una vez clonado, accede al directorio del proyecto:
 
 ```bash
 cd app-journal
 ```
 
-## **2. Instalar dependencias**  
+## **2. Instalar dependencias**
 
-Si estás usando **Bun**, ejecuta:  
+El proyecto utiliza gestores de paquetes como **Bun**, **npm** o **yarn**. Elige el que prefieras para instalar las dependencias necesarias:
+
+### Con Bun
 
 ```bash
 bun install
 ```
 
-Si usas **npm** o **yarn**, puedes instalar las dependencias con:  
+### Con npm
 
 ```bash
 npm install
-# o
+```
+
+### Con Yarn
+
+```bash
 yarn install
 ```
 
-## **3. Configuración del entorno**  
+Asegúrate de tener instalado el gestor de paquetes que elijas antes de proceder.
 
-Crea un archivo `.env` en la raíz del proyecto y configura tus variables de entorno, por ejemplo:  
+## **3. Configuración del entorno**
+
+Antes de ejecutar el proyecto, es necesario configurar las variables de entorno para conectarte a Firebase. Sigue estos pasos:
+
+1. Crea un archivo `.env` en la raíz del proyecto.
+2. Agrega las siguientes variables de entorno, reemplazando los valores con las credenciales de tu proyecto en Firebase:
 
 ```env
 VITE_FIREBASE_API_KEY=tu_api_key
-VITE_FIREBASE_AUTH_DOMAIN=tu_auth_domain
-VITE_FIREBASE_PROJECT_ID=tu_project_id
-VITE_FIREBASE_APP_ID=tu_app_id
 ```
 
-Asegúrate de reemplazar los valores con los de tu proyecto en Firebase.
+## **4. Ejecutar el proyecto**
 
-## **4. Ejecutar el proyecto**  
+Una vez configuradas las dependencias y las variables de entorno, puedes iniciar el servidor de desarrollo local:
 
-Para iniciar el entorno de desarrollo, usa:  
+### Con Bun
 
 ```bash
 bun run dev
 ```
 
-O con npm/yarn:  
+La aplicación estará disponible en tu navegador en la siguiente dirección:  
+[http://localhost:5173/](http://localhost:5173/) (o el puerto indicado en la terminal).
+
+---
+
+## **5. Formateo de código con Biome**
+
+Este proyecto utiliza **Biome** para mantener un estilo de código consistente. Para formatear el código, ejecuta:
 
 ```bash
-npm run dev
-# o
-yarn dev
-```
-
-La aplicación estará disponible en `http://localhost:5173/` (o el puerto indicado en la terminal).  
-
-## **5. Desplegar la aplicación**  
-
-Si deseas desplegar el proyecto en Firebase Hosting, sigue estos pasos:  
-
-```bash
-firebase login
-firebase init
-firebase deploy
+bun run biome
 ```
