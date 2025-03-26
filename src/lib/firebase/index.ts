@@ -1,1 +1,1 @@
-export { singInWithGoogle } from "./providers";
+export { singInWithGoogle, registerUserWithEmailPassword } from "./providers";
