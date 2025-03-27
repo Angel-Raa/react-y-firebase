@@ -4,9 +4,12 @@ import { AuthRouter } from "../auth";
 import { useAuth } from "../hook/useAuth";
 import { AuthStatus } from "../lib/store";
 import { Journal } from "../page";
+import { Checking } from "../ui/components";
 
 export const Router = () => {
 	const { status } = useAuth();
+
+	if (status === AuthStatus.Checking) return <Checking />;
 
 	return (
 		<>
