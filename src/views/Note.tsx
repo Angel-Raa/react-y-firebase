@@ -1,6 +1,6 @@
 import { DeleteOutlined, SaveOutlined } from "@mui/icons-material";
 import { Button, Grid, Grid2, TextField, Typography } from "@mui/material";
-import { Images } from "../components";
+import { Images } from "../ui/components";
 
 export const Note = () => {
 	return (

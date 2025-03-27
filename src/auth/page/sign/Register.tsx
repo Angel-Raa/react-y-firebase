@@ -52,11 +52,12 @@ export const Register: React.FC = (): React.JSX.Element => {
 		},
 		validations,
 	);
+	const { email, name, password } = formData;
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(startCreateUserWithEmailAndPassword(formData));
 	};
-	const { email, name, password } = formData;
 
 	return (
 		<>

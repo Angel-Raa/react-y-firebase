@@ -1,6 +1,6 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
-import { styles } from "../../../styles";
+import { styles } from "../../../../styles";
 
 interface Props {
 	drawerWidth: number;

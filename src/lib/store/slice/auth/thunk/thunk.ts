@@ -2,6 +2,7 @@ import {
 	registerUserWithEmailPassword,
 	singInWithGoogle,
 } from "../../../../firebase";
+import { loginWithEmailAndPassword } from "../../../../firebase/providers";
 import { checkingCredentials, login, logout } from "../authSlice";
 
 export const startCheckingAuthentication = ({
@@ -56,11 +57,39 @@ export const startCreateUserWithEmailAndPassword = ({
 	return async (
 		dispatch: (arg0: {
 			payload: undefined;
-			type: "auth/checkingCredentials";
+			type: "auth/checkingCredentials" | "auth/login";
 		}) => void,
 	) => {
 		dispatch(checkingCredentials());
-		const r = await registerUserWithEmailPassword({ name, email, password });
-		console.log({ r });
+		const { uid, photoURL } = await registerUserWithEmailPassword({
+			name,
+			email,
+			password,
+		});
+
+		dispatch(login({ uid, email, name, photoURL }));
+	};
+};
+
+export const startLoginWithEmailAndPassword = ({
+	email,
+	password,
+}: {
+	email: string;
+	password: string;
+}) => {
+	return async (
+		dispatch: (arg0: {
+			payload: undefined;
+			type: "auth/checkingCredentials" | "auth/login";
+		}) => void,
+	) => {
+		dispatch(checkingCredentials());
+		const { name, photoURL, uid } = await loginWithEmailAndPassword({
+			email,
+			password,
+		});
+
+		dispatch(login({ uid, email, name, photoURL }));
 	};
 };

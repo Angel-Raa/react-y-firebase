@@ -3,14 +3,17 @@ import { Box, Button, Link, TextField, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router";
 import { useForm } from "../../../hook/useForm";
 import { useAppDispatch } from "../../../hooks";
-import { startGoogleSign } from "../../../lib/store";
+import {
+	startGoogleSign,
+	startLoginWithEmailAndPassword,
+} from "../../../lib/store";
 import { AuthLayout } from "../../layout/AuthLayout";
 
 export const Login: React.FC = (): React.JSX.Element => {
 	const dispatch = useAppDispatch();
 	const { formData, handleInputChange } = useForm({
-		email: "angelaguero@gmail.com",
-		password: "12345",
+		email: "",
+		password: "",
 	});
 
 	const { email, password } = formData;
@@ -18,7 +21,7 @@ export const Login: React.FC = (): React.JSX.Element => {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log(formData);
-		//dispatch(startCheckingAuthentication());
+		dispatch(startLoginWithEmailAndPassword(formData));
 	};
 
 	const handleGoogleSignIn = async () => {

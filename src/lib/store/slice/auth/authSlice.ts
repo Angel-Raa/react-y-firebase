@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-enum AuthStatus {
+export enum AuthStatus {
 	Checking = "Checking",
 	NotAuthenticated = "Not-authenticated",
 	Authenticated = "Authenticated",

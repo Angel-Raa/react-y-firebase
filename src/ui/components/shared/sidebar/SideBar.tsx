@@ -12,7 +12,7 @@ import {
 	Toolbar,
 	Typography,
 } from "@mui/material";
-import { styles } from "../../../styles";
+import { styles } from "../../../../styles";
 
 interface Props {
 	drawerWidth: number;
