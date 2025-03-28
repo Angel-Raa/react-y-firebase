@@ -11,7 +11,7 @@ git clone https://github.com/Angel-Raa/react-y-firebase.git
 Una vez clonado, accede al directorio del proyecto:
 
 ```bash
-cd app-journal
+cd react-y-firebase
 ```
 
 ## **2. Instalar dependencias**
