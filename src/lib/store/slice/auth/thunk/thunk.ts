@@ -2,7 +2,10 @@ import {
 	registerUserWithEmailPassword,
 	singInWithGoogle,
 } from "../../../../firebase";
-import { loginWithEmailAndPassword } from "../../../../firebase/providers";
+import {
+	loginWithEmailAndPassword,
+	logoutFirebase,
+} from "../../../../firebase/providers";
 import { checkingCredentials, login, logout } from "../authSlice";
 
 export const startCheckingAuthentication = ({
@@ -91,5 +94,14 @@ export const startLoginWithEmailAndPassword = ({
 		});
 
 		dispatch(login({ uid, email, name, photoURL }));
+	};
+};
+
+export const startLogoutFirebase = () => {
+	return async (
+		dispatch: (arg0: { payload: undefined; type: "auth/logout" }) => void,
+	) => {
+		await logoutFirebase();
+		dispatch(logout());
 	};
 };

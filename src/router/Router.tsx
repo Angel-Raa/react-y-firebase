@@ -15,11 +15,17 @@ export const Router = () => {
 		<>
 			<Routes>
 				{status === AuthStatus.Authenticated ? (
-					<Route path="/" element={<Journal />} />
+					<>
+						<Route path="/" element={<Journal />} />
+						<Route path="/journal" element={<Journal />} />
+						<Route path="/*" element={<Navigate to="/journal" />} />
+					</>
 				) : (
-					<Route path="/auth/*" element={<AuthRouter />} />
+					<>
+						<Route path="/auth/*" element={<AuthRouter />} />
+						<Route path="/*" element={<Navigate to="/auth/login" />} />
+					</>
 				)}
-				<Route path="/*" element={<Navigate to={"/auth/login"} />} />
 			</Routes>
 		</>
 	);

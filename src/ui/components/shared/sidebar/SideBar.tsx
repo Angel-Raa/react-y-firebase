@@ -12,12 +12,16 @@ import {
 	Toolbar,
 	Typography,
 } from "@mui/material";
+import { useAppSelector } from "../../../../hooks";
 import { styles } from "../../../../styles";
 
 interface Props {
 	drawerWidth: number;
 }
 export const SideBar = ({ drawerWidth }: Props): React.JSX.Element => {
+	const name = useAppSelector((state) => state.auth.displayName);
+	console.log(name);
+
 	return (
 		<Box component="nav" sx={styles.drawer(drawerWidth)}>
 			<Drawer
@@ -30,7 +34,7 @@ export const SideBar = ({ drawerWidth }: Props): React.JSX.Element => {
 			>
 				<Toolbar>
 					<Typography variant="h6" noWrap component="div">
-						Angel Aguero
+						{name}
 					</Typography>
 				</Toolbar>
 				<Divider />

@@ -3,4 +3,5 @@ export {
 	startCheckingAuthentication,
 	startGoogleSign,
 	startLoginWithEmailAndPassword,
+	startLogoutFirebase,
 } from "./slice/auth/thunk/thunk";

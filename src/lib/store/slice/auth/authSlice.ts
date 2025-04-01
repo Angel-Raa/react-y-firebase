@@ -36,6 +36,10 @@ export const authSlice = createSlice({
 		},
 		logout: (state) => {
 			state.status = AuthStatus.NotAuthenticated;
+			state.uid = "";
+			state.email = "";
+			state.photoURL = "";
+			state.displayName = "";
 		},
 		checkingCredentials: (state) => {
 			state.status = AuthStatus.Checking;
