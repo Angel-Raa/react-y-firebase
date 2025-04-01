@@ -8,7 +8,6 @@ import { Checking } from "../ui/components";
 
 export const Router = () => {
 	const { status } = useAuth();
-
 	if (status === AuthStatus.Checking) return <Checking />;
 
 	return (
