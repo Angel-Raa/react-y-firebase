@@ -5,3 +5,4 @@ export {
 	startLoginWithEmailAndPassword,
 	startLogoutFirebase,
 } from "./slice/auth/thunk/thunk";
+export {startNewNote} from "./slice/journal/thunk"

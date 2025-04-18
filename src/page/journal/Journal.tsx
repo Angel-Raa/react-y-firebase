@@ -2,13 +2,21 @@ import { AddOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { JournalLayout } from "../../layout/JournalLayout";
 import { NothingSelectedView } from "../../views";
+import { useAppDispatch } from "../../hooks";
+import { startNewNote } from "../../lib/store";
 
 export const Journal = () => {
+	const dispatch = useAppDispatch();
+	const onClickNewNote = () => {
+
+		dispatch(startNewNote());
+	}
 	return (
 		<JournalLayout>
 			<NothingSelectedView />
 
 			<IconButton
+			onClick={onClickNewNote}
 				size="large"
 				sx={{
 					color: "white",
