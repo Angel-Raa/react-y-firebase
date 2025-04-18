@@ -14,12 +14,25 @@ export const Journal = () => {
 					color: "white",
 					backgroundColor: "error.main",
 					position: "fixed",
-					right: 50, // Distancia desde el borde derecho
-					bottom: 50, // Distancia desde el borde inferior
-					zIndex: 1000, // Asegura que el botón esté por encima de otros elementos
+					right: 50,
+					bottom: 50,
+					zIndex: 1000,
+					boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+					transition: "all 0.3s ease-in-out",
 					"&:hover": {
-						backgroundColor: "error.dark", // Cambia el color al hacer hover
+						backgroundColor: "error.dark",
+						transform: "scale(1.1)",
+						boxShadow: "0 6px 25px rgba(0, 0, 0, 0.3)",
 					},
+					"&:active": {
+						transform: "scale(0.95)",
+					},
+					"& .MuiSvgIcon-root": {
+						transition: "transform 0.3s ease-in-out",
+					},
+					"&:hover .MuiSvgIcon-root": {
+						transform: "rotate(90deg)",
+					}
 				}}
 			>
 				<AddOutlined

@@ -14,13 +14,28 @@ export const NavBar = ({ drawerWidth }: Props): React.JSX.Element => {
 		dispatch(startLogoutFirebase());
 	};
 	return (
-		<AppBar position="fixed" sx={styles.appBar(drawerWidth)}>
+		<AppBar 
+			position="fixed" 
+			sx={{
+				...styles.appBar(drawerWidth),
+				background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+				boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+				backdropFilter: "blur(10px)",
+			}}
+		>
 			<Toolbar>
 				<IconButton
 					edge="start"
 					color="inherit"
 					aria-label="menu"
-					sx={{ mr: 2, display: { sm: "none" } }}
+					sx={{ 
+						mr: 2, 
+						display: { sm: "none" },
+						transition: "transform 0.3s ease-in-out",
+						"&:hover": {
+							transform: "scale(1.1)",
+						}
+					}}
 				>
 					<MenuOutlined />
 				</IconButton>
@@ -35,7 +50,11 @@ export const NavBar = ({ drawerWidth }: Props): React.JSX.Element => {
 						variant="h6"
 						noWrap
 						component="div"
-						sx={{ fontWeight: 600 }}
+						sx={{ 
+							fontWeight: 700,
+							letterSpacing: "0.5px",
+							textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+						}}
 					>
 						Journal
 					</Typography>
@@ -43,7 +62,14 @@ export const NavBar = ({ drawerWidth }: Props): React.JSX.Element => {
 						onClick={handleLogout}
 						color="error"
 						aria-label="logout"
-						sx={{ ml: 2 }}
+						sx={{ 
+							ml: 2,
+							transition: "all 0.3s ease-in-out",
+							"&:hover": {
+								transform: "scale(1.1)",
+								backgroundColor: "rgba(255, 255, 255, 0.1)",
+							}
+						}}
 					>
 						<LogoutOutlined />
 					</IconButton>
