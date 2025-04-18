@@ -18,23 +18,22 @@ export const AuthLayout = ({
 			sx={{
 				minHeight: "100vh",
 				background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-				padding: 4,
+				padding: { xs: 2, md: 4 },
 			}}
 		>
 			<Box
 				component={"div"}
-				className="box-shadow"
+				className="glass-effect fade-in"
 				sx={{
-					backgroundColor: "rgba(255, 255, 255, 0.95)",
-					padding: 4,
+					padding: { xs: 3, md: 4 },
 					borderRadius: 3,
 					boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-					width: { md: 455 },
-					transition: "transform 0.3s ease-in-out",
+					width: { xs: "90%", sm: "80%", md: 455 },
+					transition: "all 0.3s ease-in-out",
 					"&:hover": {
 						transform: "translateY(-5px)",
+						boxShadow: "0 12px 40px rgba(0, 0, 0, 0.15)",
 					},
-					backdropFilter: "blur(10px)",
 				}}
 			>
 				<Typography 
@@ -42,14 +41,27 @@ export const AuthLayout = ({
 					sx={{ 
 						mb: 3, 
 						textAlign: "center",
-						fontWeight: 600,
+						fontWeight: 700,
 						color: "primary.main",
-						letterSpacing: "0.5px"
+						letterSpacing: "0.5px",
+						textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+						fontSize: { xs: "1.75rem", md: "2rem" },
 					}}
 				>
 					{title}
 				</Typography>
-				{children}
+				<Box
+					sx={{
+						"& > *": {
+							mb: 2,
+							"&:last-child": {
+								mb: 0,
+							},
+						},
+					}}
+				>
+					{children}
+				</Box>
 			</Box>
 		</Grid2>
 	);

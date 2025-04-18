@@ -1,17 +1,64 @@
 @import "tailwindcss";
+
+/* Reset y estilos base */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-  }
-  
-  html, body {
+}
+
+html, body, #root {
 	width: 100%;
+	min-height: 100vh;
 	overflow-x: hidden;
-  }
-  
-  #app {
-	max-width: 100vw;
-	overflow-x: hidden;
-  }
+	font-family: 'Roboto', sans-serif;
+}
+
+/* Clases utilitarias personalizadas */
+.glass-effect {
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+.gradient-bg {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.hover-scale {
+	transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+	transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-in {
+	animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+	.responsive-padding {
+		padding: 1rem;
+	}
+}
+
+@media (min-width: 769px) {
+	.responsive-padding {
+		padding: 2rem;
+	}
+}
   

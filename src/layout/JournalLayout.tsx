@@ -15,19 +15,26 @@ export const JournalLayout = ({ children }: Props) => {
 				background: "linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%)",
 				backdropFilter: "blur(5px)",
 				transition: "all 0.3s ease-in-out",
+				position: "relative",
+				overflow: "hidden",
 			}}
 		>
 			<NavBar drawerWidth={drawerWidth} />
 			<SideBar drawerWidth={drawerWidth} />
 			<Box 
 				component="main" 
+				className="fade-in"
 				sx={{
 					...styles.mainContent,
 					background: "transparent",
-					padding: "20px",
+					padding: { xs: 2, md: 3 },
 					transition: "all 0.3s ease-in-out",
 					"&:hover": {
 						background: "rgba(255, 255, 255, 0.02)",
+					},
+					"& > *": {
+						maxWidth: "100%",
+						overflowX: "hidden",
 					}
 				}}
 			>
