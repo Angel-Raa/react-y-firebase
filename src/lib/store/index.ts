@@ -1,8 +1,8 @@
 export * from "./slice/auth/authSlice";
 export {
-	startCheckingAuthentication,
-	startGoogleSign,
-	startLoginWithEmailAndPassword,
-	startLogoutFirebase,
+  startCheckingAuthentication,
+  startGoogleSign,
+  startLoginWithEmailAndPassword,
+  startLogoutFirebase,
 } from "./slice/auth/thunk/thunk";
-export {startNewNote} from "./slice/journal/thunk"
+export { startNewNote } from "./slice/journal/thunk";

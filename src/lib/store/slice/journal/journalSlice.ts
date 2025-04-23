@@ -14,7 +14,7 @@ interface Note {
 }
 
 const journalInitialState: Note = {
-  isSaving: true,
+  isSaving: false,
   message: "",
   notes: [],
   active: undefined,
@@ -23,13 +23,30 @@ export const journalSice = createSlice({
   name: "journal",
   initialState: journalInitialState,
   reducers: {
-    addNewNotes: (state, action) => {},
-    setActiveNote: (state, action) => {},
+    addNewNotes: (state, action) => {
+      state.notes.push(action.payload);
+      state.isSaving = false;
+    },
+    setActiveNote: (state, action) => {
+      state.active = action.payload;
+    },
     setNotes: (state, action) => {},
     setSaving: (state, action) => {},
     updateNotes: (state, action) => {},
     deleteByIdNotes: (state, action) => {},
+    savingNewNotes: (state) => {
+      state.isSaving = true;
+    },
+    //creatingNewNotes :(state, action) => {}
   },
 });
 
-export const {addNewNotes, setActiveNote, setNotes, updateNotes,deleteByIdNotes, setSaving} = journalSice.actions;
+export const {
+  addNewNotes,
+  setActiveNote,
+  setNotes,
+  updateNotes,
+  deleteByIdNotes,
+  setSaving,
+  savingNewNotes,
+} = journalSice.actions;
