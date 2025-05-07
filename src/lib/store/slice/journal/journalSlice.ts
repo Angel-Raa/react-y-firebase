@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 interface Active {
   id: string;
-  title: string;
-  body: string;
-  date: Date;
-  imageUrls: string[];
+  title?: string;
+  body?: string;
+  date?: Date | string;
+  imageUrls?: string[];
 }
 interface Note {
   isSaving: boolean;
@@ -30,7 +30,9 @@ export const journalSice = createSlice({
     setActiveNote: (state, action) => {
       state.active = action.payload;
     },
-    setNotes: (state, action) => {},
+    setNotes: (state, action) => {
+      state.notes = action.payload;
+    },
     setSaving: (state, action) => {},
     updateNotes: (state, action) => {},
     deleteByIdNotes: (state, action) => {},

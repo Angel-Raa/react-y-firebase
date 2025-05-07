@@ -1,6 +1,6 @@
 import { doc, collection, setDoc } from "firebase/firestore/lite";
 import { db } from "../../../firebase/firebaseConfig";
-import { addNewNotes, savingNewNotes, setActiveNote } from "./journalSlice";
+import { addNewNotes, savingNewNotes, setActiveNote, setNotes } from "./journalSlice";
 import { loadNotes } from "../../../../utils/LoadNotes";
 
 export const startNewNote = () => {
@@ -43,7 +43,8 @@ export const startLoadingNotes = () => {
       console.error("UID no disponible");
     }
     try {
-      await loadNotes(uid);
+      const notes = await loadNotes(uid);
+      dispatch(setNotes(notes));
     } catch (error) {
       console.error("Error en startLoadingNotes:", error);
     }
