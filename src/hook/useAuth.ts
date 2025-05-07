@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { auth } from "../lib/firebase/firebaseConfig";
 import { login, logout } from "../lib/store";
+import { startLoadingNotes } from "../lib/store/slice/journal/thunk";
 
 export const useAuth = () => {
 	const { status } = useAppSelector((state) => state.auth);
@@ -21,6 +22,7 @@ export const useAuth = () => {
 					photoURL,
 				}),
 			);
+			dispatch(startLoadingNotes());
 		});
 	}, [dispatch]);
 	return {
