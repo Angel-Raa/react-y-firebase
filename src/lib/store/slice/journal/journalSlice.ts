@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Notes } from "../../../../utils/LoadNotes";
 interface Active {
   id: string;
   title?: string;
@@ -9,7 +10,7 @@ interface Active {
 interface Note {
   isSaving: boolean;
   message: string;
-  notes: string[];
+  notes: Notes[];
   active: Active | undefined;
 }
 

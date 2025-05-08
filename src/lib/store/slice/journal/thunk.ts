@@ -20,7 +20,7 @@ export const startNewNote = () => {
     }
 
     const newNotes: Note = {
-      id: "",
+      id:uid,
       title: "",
       body: "",
       date: new Date().getTime(),

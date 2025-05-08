@@ -1,11 +1,11 @@
 import { db } from "../lib/firebase/firebaseConfig";
 import { getDocs, collection, FirestoreError } from "firebase/firestore/lite";
 
-interface Note {
+export interface Notes {
   id: string;
-  title?: string;
-  body?: string;
-  date?: string;
+  title: string;
+  body: string;
+  date: string;
   // Agrega otros campos según tu modelo de datos
 }
 
@@ -15,7 +15,7 @@ interface Note {
  * @returns Promesa que resuelve con un array de notas
  * @throws Error si el UID no existe o hay problemas al cargar las notas
  */
-export const loadNotes = async (uid: string): Promise<Note[]> => {
+export const loadNotes = async (uid: string): Promise<Notes[]> => {
   // Validación temprana con mensaje más descriptivo
   if (!uid) {
     throw new Error("El UID del usuario es requerido");
@@ -28,17 +28,18 @@ export const loadNotes = async (uid: string): Promise<Note[]> => {
     // Obtener documentos
     const querySnapshot = await getDocs(notesCollection);
 
+    console.log({ querySnapshot });
+
     // Mapear documentos a array de notas de forma más eficiente
-    const notes: Note[] = querySnapshot.docs.map(
+    const notes: Notes[] = querySnapshot.docs.map(
       (doc) =>
         ({
-          id: doc.id,
           ...doc.data(),
-        } as Note)
+        } as Notes)
     );
 
-    console.log({notes});
-    
+    console.log({ notes });
+
     return notes;
   } catch (error) {
     // Mejor manejo de errores con tipo específico
