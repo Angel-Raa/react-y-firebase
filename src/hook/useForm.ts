@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ValidationRule = {
 	required?: boolean;
@@ -16,6 +16,10 @@ export const useForm = <T extends Record<string, string | number | boolean>>(
 	const [formData, setFormData] = useState<T>(initialForm);
 	const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
 	const [message, setMessage] = useState<string>("");
+
+	useEffect(() => {
+		setFormData(initialForm)
+	}, [initialForm])
 
 	const validateField = (
 		name: keyof T,

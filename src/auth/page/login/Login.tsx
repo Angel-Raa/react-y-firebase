@@ -9,12 +9,14 @@ import {
 } from "../../../lib/store";
 import { AuthLayout } from "../../layout/AuthLayout";
 
+
+const formLogin = {
+	email: "",
+	password:""
+}
 export const Login: React.FC = (): React.JSX.Element => {
 	const dispatch = useAppDispatch();
-	const { formData, handleInputChange } = useForm({
-		email: "",
-		password: "",
-	});
+	const { formData, handleInputChange } = useForm(formLogin);
 
 	const { email, password } = formData;
 

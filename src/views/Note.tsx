@@ -1,8 +1,51 @@
 import { DeleteOutlined, SaveOutlined } from "@mui/icons-material";
 import { Button, Grid, Grid2, TextField, Typography } from "@mui/material";
 import { Images } from "../ui/components";
-
+import { useForm } from "../hook/useForm";
+import { useAppSelector } from "../hooks";
+ // Definir validaciones para los campos del formulario
+  const validations = {
+    title: [
+      {
+        required: true,
+        message: "El título es requerido",
+      },
+      {
+        minLength: 3,
+        message: "El título debe tener al menos 3 caracteres",
+      },
+    ],
+    body: [
+      {
+        required: true,
+        message: "El contenido es requerido",
+      },
+    ],
+  };
+  
 export const Note = () => {
+	const {active:activeNote} = useAppSelector(state => state.journal)
+	  // Inicializar el formulario con los datos de la nota activa o valores por defecto
+  // Adapt initialFormData to match Record<string, string | number | boolean>
+  const initialFormData: Record<string, string | number | boolean> = activeNote
+	? {
+		id: activeNote.id ?? "",
+		title: activeNote.title ?? "",
+		body: activeNote.body ?? "",
+		date: typeof activeNote.date === "string" ? activeNote.date : (activeNote.date instanceof Date ? activeNote.date.toISOString() : ""),
+		// imageUrls is omitted because it's not string|number|boolean
+	  }
+	: {
+		id: "",
+		title: "",
+		body: "",
+		date: new Date().toISOString(),
+	  };
+
+	const {formData, handleInputChange} = useForm(initialFormData, validations);
+	const {title, body} = formData
+
+
 	return (
 		<Grid2
 			container
@@ -99,6 +142,8 @@ export const Note = () => {
 							}
 						}
 					}}
+					value={body}
+					onChange={handleInputChange}
 				/>
 			</Grid>
 
@@ -126,6 +171,8 @@ export const Note = () => {
 							}
 						}
 					}}
+					value={title}
+					onChange={handleInputChange}
 				/>
 			</Grid>
 
