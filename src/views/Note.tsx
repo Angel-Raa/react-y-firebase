@@ -2,7 +2,10 @@ import { DeleteOutlined, SaveOutlined } from "@mui/icons-material";
 import { Button, Grid, Grid2, TextField, Typography } from "@mui/material";
 import { Images } from "../ui/components";
 import { useForm } from "../hook/useForm";
-import { useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { useEffect } from "react";
+import { setActiveNote } from "../lib/store/slice/journal/journalSlice";
+import { startSaveNote } from "../lib/store/slice/journal/thunk";
  // Definir validaciones para los campos del formulario
   const validations = {
     title: [
@@ -24,6 +27,7 @@ import { useAppSelector } from "../hooks";
   };
   
 export const Note = () => {
+	const dispatch = useAppDispatch();
 	const {active:activeNote} = useAppSelector(state => state.journal)
 	  // Inicializar el formulario con los datos de la nota activa o valores por defecto
   // Adapt initialFormData to match Record<string, string | number | boolean>
@@ -45,6 +49,14 @@ export const Note = () => {
 	const {formData, handleInputChange} = useForm(initialFormData, validations);
 	const {title, body} = formData
 
+	useEffect(() => {
+
+		dispatch(setActiveNote(formData))
+	}, [formData, dispatch])
+
+	const onSavaNote = () => {
+		dispatch(startSaveNote())
+	}
 
 	return (
 		<Grid2
@@ -83,6 +95,7 @@ export const Note = () => {
 				</Grid>
 				<Grid item>
 					<Button 
+					onClick={onSavaNote}
 						variant="contained" 
 						sx={{ 
 							mr: 2,
@@ -119,6 +132,7 @@ export const Note = () => {
 			{/* Note Content */}
 			<Grid item>
 				<TextField
+				  name="body"
 					fullWidth
 					variant="outlined"
 					label="Note Content"
@@ -150,6 +164,7 @@ export const Note = () => {
 			{/* Note Title */}
 			<Grid item>
 				<TextField
+				name="title"
 					fullWidth
 					variant="outlined"
 					label="Title"

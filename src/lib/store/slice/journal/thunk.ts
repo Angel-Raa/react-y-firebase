@@ -1,6 +1,11 @@
 import { doc, collection, setDoc } from "firebase/firestore/lite";
 import { db } from "../../../firebase/firebaseConfig";
-import { addNewNotes, savingNewNotes, setActiveNote, setNotes } from "./journalSlice";
+import {
+  addNewNotes,
+  savingNewNotes,
+  setActiveNote,
+  setNotes,
+} from "./journalSlice";
 import { loadNotes } from "../../../../utils/LoadNotes";
 
 export const startNewNote = () => {
@@ -20,7 +25,7 @@ export const startNewNote = () => {
     }
 
     const newNotes: Note = {
-      id:uid,
+      id: uid,
       title: "",
       body: "",
       date: new Date().getTime(),
@@ -48,5 +53,20 @@ export const startLoadingNotes = () => {
     } catch (error) {
       console.error("Error en startLoadingNotes:", error);
     }
+  };
+};
+
+export const startSaveNote = () => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+    const { active: note } = getState().journal;
+    const noToFireStoge = { ...note };
+    delete noToFireStoge.id;
+    console.log(noToFireStoge);
+
+    const docRef = doc(collection(db, `${uid}/journal/${note.id}`));
+    await setDoc(docRef, noToFireStoge, {
+      merge: true,
+    });
   };
 };

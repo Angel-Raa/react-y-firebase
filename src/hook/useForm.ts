@@ -17,9 +17,17 @@ export const useForm = <T extends Record<string, string | number | boolean>>(
 	const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({});
 	const [message, setMessage] = useState<string>("");
 
+
 	useEffect(() => {
-		setFormData(initialForm)
-	}, [initialForm])
+		// Solo actualiza si el objeto es diferente
+		const isDifferent = Object.keys(initialForm).some(
+			(key) => formData[key as keyof T] !== initialForm[key as keyof T],
+		);
+		if (isDifferent) {
+			setFormData(initialForm);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const validateField = (
 		name: keyof T,
